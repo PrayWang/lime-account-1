@@ -5,7 +5,7 @@
       标签
     </router-link>
     <router-link to="/money" class="item" active-class="selected">
-      <Icon name="money"/>
+      <Icon name="money1"/>
       记账
     </router-link>
     <router-link to="/statistics" class="item" active-class="selected">
