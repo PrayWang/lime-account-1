@@ -1,29 +1,6 @@
 <template>
  <div>
-   <layout>
-     <div>
-       <ul class="types">
-         <li class="selected pay">支出</li>
-         <li class="income">收入</li>
-       </ul>
-     </div>
-     <div class="tags">
-       <ul class="current">
-         <li>衣</li>
-         <li>食</li>
-         <li>住</li>
-         <li>行</li>
-       </ul>
-       <div class="new">
-         <button>新增标签</button>
-       </div>
-     </div>
-     <div>
-       <label class="notes">
-         <span class="name">备注</span>
-       <input type="text" placeholder="在这里输入备注">
-       </label>
-     </div>
+   <layout class-prefix="layout">
      <div class="numberPad">
        <div class="output">100</div>
        <div class="buttons">
@@ -43,6 +20,29 @@
          <button class="OK">OK</button>
        </div>
      </div>
+     <div>
+       <label class="notes">
+         <span class="name">备注</span>
+         <input type="text" placeholder="在这里输入备注">
+       </label>
+     </div>
+     <div class="tags">
+       <div class="new">
+         <button>新增标签</button>
+       </div>
+       <ul class="current">
+         <li>衣</li>
+         <li>食</li>
+         <li>住</li>
+         <li>行</li>
+       </ul>
+     </div>
+     <div>
+       <ul class="types">
+         <li class="selected pay">支出</li>
+         <li class="income">收入</li>
+       </ul>
+     </div>
    </layout>
  </div>
 </template>
@@ -52,6 +52,13 @@ export default {
   name: 'Money',
 };
 </script>
+
+<style lang="scss">
+  .layout-content{
+    display: flex;
+    flex-direction: column-reverse;
+ }
+</style>
 
 <style lang="scss" scoped>
   @import "~@/assets/style/helper.scss";
@@ -83,11 +90,16 @@ export default {
     }
   }
   .tags{
+    flex-grow: 1;
     font-size:14px;
     padding: 16px;
     background:#F7F7F7;
+    display: flex;
+    flex-direction: column-reverse;
     > .current{
       display: flex;
+      flex-wrap: wrap;
+      overflow: auto;
       > li{
         background: #78C88C;
         $h:24px;
@@ -97,6 +109,7 @@ export default {
         padding: 0 16px;
         margin-right: 12px;
         color: azure;
+        margin-top: 4px;
       }
     }
     > .new{
