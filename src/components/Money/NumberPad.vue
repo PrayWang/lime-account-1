@@ -45,7 +45,7 @@ export default {
     > button {
       float: left;
       width: 20%;
-      height: 46px;
+      height: 5%;
       margin-right: 2%;
       margin-left: 2%;
       margin-top: 2.5%;
