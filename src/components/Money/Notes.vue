@@ -9,28 +9,36 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Watch} from 'vue-property-decorator';
 
 @Component
-export default class Notes extends Vue{
+export default class Notes extends Vue {
   value = '';
+
+  @Watch('value')
+  onValueChanged(value: string) {
+    this.$emit('update:value', value);
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
-.notes{
+
+.notes {
   border: 2px solid #25C877;
   border-radius: 10px;
   font-size: 14px;
-  background: rgb(249,244,219);
+  background: rgb(249, 244, 219);
   display: flex;
   padding-left: 16px;
   align-items: center;
-  .name{
+
+  .name {
     padding-right: 16px;
   }
-  input{
+
+  input {
     height: 62px;
     flex-grow: 1;
     background: transparent;
