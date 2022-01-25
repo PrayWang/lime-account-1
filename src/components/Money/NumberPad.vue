@@ -103,12 +103,10 @@ export default class NumberPad extends Vue {
         width: 44%;
         background: #FEF3BB;
       }
-
       &.zero {
         margin-right: 2%;
         width: 44%;
       }
-
     }
   }
 }
