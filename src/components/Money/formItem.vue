@@ -12,7 +12,7 @@ import Vue from 'vue';
 import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
-export default class Notes extends Vue {
+export default class FormItem extends Vue {
   value = '';
 
   @Prop({required:true})fieldName!:string;
@@ -30,7 +30,6 @@ export default class Notes extends Vue {
 .notes {
   border-radius: 10px;
   font-size: 16px;
-  background: white;
   display: flex;
   padding-left: 16px;
   align-items: center;
@@ -40,7 +39,7 @@ export default class Notes extends Vue {
   }
 
   input {
-    height: 62px;
+    height: 40px;
     flex-grow: 1;
     background: transparent;
     border: none;
