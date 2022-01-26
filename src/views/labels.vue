@@ -3,7 +3,7 @@
     <Layout>
       <div class="tags">
         <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
-          <span>{{tag.name}}</span>
+          <span>{{ tag.name }}</span>
           <Icon name="right"/>
         </router-link>
       </div>
@@ -30,8 +30,8 @@ export default class Labels extends Vue {
       const messeage = tagListModel.create(name);
       if (messeage === 'duplicated') {
         window.alert('标签名重复了');
-      }else if(messeage === 'success'){
-        window.alert('添加成功')
+      } else if (messeage === 'success') {
+        window.alert('添加成功');
       }
     }
   }
