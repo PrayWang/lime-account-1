@@ -39,6 +39,7 @@ export default class NumberPad extends Vue {
       }
     }
   }
+
 }
 </script>
 
