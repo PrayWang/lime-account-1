@@ -19,20 +19,14 @@ import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import {tagListModel} from '@/models/tagListModel';
 
-tagListModel.fetch();
 @Component
 export default class Labels extends Vue {
-  tags = tagListModel.data;
+  tags = window.tagList;
 
   createTag() {
     const name = window.prompt('请输入标签名');
     if (name) {
-      const messeage = tagListModel.create(name);
-      if (messeage === 'duplicated') {
-        window.alert('标签名重复了');
-      } else if (messeage === 'success') {
-        window.alert('添加成功');
-      }
+      window.createTag(name);
     }
   }
 };
@@ -44,6 +38,9 @@ export default class Labels extends Vue {
   font-size: 18px;
   padding-left: 16px;
   padding-right: 16px;
+  max-height: 60vh;
+  overflow: auto;
+
 
   > .tag {
     min-height: 44px;
