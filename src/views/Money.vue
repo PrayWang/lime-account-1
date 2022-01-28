@@ -3,7 +3,7 @@
     <layout class-prefix="layout">
       <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
       <div class="notes-wrapper">
-        <FormItem  field-name="备注" placeholder="请输入备注" @update:value="onUpdateNotes"/>
+        <FormItem field-name="备注" placeholder="请输入备注" @update:value="onUpdateNotes"/>
       </div>
       <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
       <Types :value.sync="record.type"/>
@@ -16,18 +16,15 @@ import Vue from 'vue';
 import NumberPad from '@/components/Money/NumberPad.vue';
 import Tags from '@/components/Money/Tags.vue';
 import Types from '@/components/Money/Types.vue';
-import {Component, Watch} from 'vue-property-decorator';
-import {recordListModel} from '@/models/recordListModel';
+import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/Money/formItem.vue';
 
-const recordList = recordListModel.fetch();
-
 @Component({
-  components: {FormItem, Types,Tags, NumberPad}
+  components: {FormItem, Types, Tags, NumberPad}
 })
 export default class Money extends Vue {
   tags = window.tagList;
-  recordList: RecordItem[] = recordList;
+  recordList = window.recordList;
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
@@ -45,12 +42,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-   recordListModel.create(this.record)
-  }
-
-  @Watch('recordList')
-  onRecordListChange() {
-    recordListModel.save();
+    window.createRecord(this.record);
   }
 }
 </script>
@@ -61,7 +53,7 @@ export default class Money extends Vue {
   flex-direction: column-reverse;
 }
 
-.notes-wrapper{
+.notes-wrapper {
   border: 3px solid #25C877;
   border-radius: 10px;
   background: rgb(249, 244, 219);
