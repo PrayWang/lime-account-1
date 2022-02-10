@@ -6,7 +6,8 @@
         <FormItem field-name="备注" placeholder="请输入备注" @update:value="onUpdateNotes"/>
       </div>
       <Tags/>
-      <Types :value.sync="record.type"/>
+      <Tabs :data-source="recordTypeList"
+      :value.sync="record.type"/>
     </layout>
   </div>
 </template>
@@ -18,10 +19,11 @@ import Tags from '@/components/Money/Tags.vue';
 import Types from '@/components/Money/Types.vue';
 import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/Money/formItem.vue';
-
+import Tabs from '@/components/Tabs.vue';
+import recordTypeList from '@/constants/recordTypeList';
 
 @Component({
-  components: {FormItem, Types, Tags, NumberPad},
+  components: {FormItem, Types, Tags, NumberPad,Tabs},
   },
 )
 export default class Money extends Vue {
@@ -47,6 +49,7 @@ export default class Money extends Vue {
   saveRecord() {
     this.$store.commit('createRecord',this.record);
   }
+  recordTypeList = recordTypeList;
 }
 </script>
 
