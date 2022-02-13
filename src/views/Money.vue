@@ -31,7 +31,7 @@ export default class Money extends Vue {
     return this.$store.state.recordList;
   }
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0,createRecordError:null
+    tags: [], notes: '', type: '-', amount: 0,
   };
 
   created(){
