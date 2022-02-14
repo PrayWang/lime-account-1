@@ -1,12 +1,14 @@
 <template>
   <div class="tags">
+    <div class="img"></div>
     <div class="new">
       <button @click="createTag">新增标签</button>
     </div>
     <ul class="current">
       <li v-for="tag in tagList" :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{tag.name}}</li>
+          @click="toggle(tag)">
+        {{tag.name}}</li>
 
     </ul>
   </div>
@@ -48,9 +50,11 @@ export default class Tags extends mixins(TagHelper) {
   flex-grow: 1;
   font-size:14px;
   padding: 16px;
-  background:#F7F7F7;
+  background:#F7F7F7 center center no-repeat;
   display: flex;
   flex-direction: column-reverse;
+  background-image: url("../../assets/icons/lime.png") ;
+
   > .current{
     display: flex;
     flex-wrap: wrap;
@@ -67,7 +71,7 @@ export default class Tags extends mixins(TagHelper) {
       color: azure;
       margin-top: 4px;
       &.selected{
-        background: darken($bg,25%);
+        background: rgb(0,173,149);
       }
     }
   }

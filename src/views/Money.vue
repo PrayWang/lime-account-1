@@ -2,11 +2,18 @@
   <div>
     <layout class-prefix="layout">
       <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
-      <div class="notes-wrapper">
-        <FormItem field-name="备注" placeholder="请输入备注"
-        :value.sync="record.notes"/>
+      <div class="wrapper">
+      <div class="createAt">
+        <FormItem field-name="日期" placeholder="请输入日期"
+                  type="date"
+                  :value.sync="record.createdAt"/>
       </div>
-      <Tags @update:value="record.tags = $event"  />
+        <div class="notes-wrapper">
+          <FormItem field-name="备注" placeholder="请输入备注"
+                    :value.sync="record.notes"/>
+        </div>
+      </div>
+        <Tags @update:value="record.tags = $event"/>
       <Tabs :data-source="recordTypeList"
       :value.sync="record.type"/>
     </layout>
@@ -31,7 +38,7 @@ export default class Money extends Vue {
     return this.$store.state.recordList;
   }
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0,
+    tags: [], notes: '', type: '-', amount: 0,createdAt:new Date().toISOString()
   };
 
   created(){
@@ -66,11 +73,14 @@ export default class Money extends Vue {
   flex-direction: column-reverse;
 }
 
-.notes-wrapper {
+.wrapper {
   border: 3px solid #25C877;
   border-radius: 10px;
   background: rgb(249, 244, 219);
-  padding: 9px 0;
+  padding: 5px 0;
+  > .createAt{
+    border-bottom: 1px solid #e6e6e6;
+  }
 }
 </style>
 
