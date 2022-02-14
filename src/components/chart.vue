@@ -1,0 +1,28 @@
+<template>
+<div class="chartWrapper" ref="wrapper">
+</div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import {Component,Prop} from 'vue-property-decorator';
+import echarts, {EChartOption} from 'echarts';
+
+@Component
+export default class Chart extends Vue {
+  @Prop() options?:EChartOption;
+  mounted(){
+    if(this.options === undefined){
+      return console.error('options为空')
+    }
+    const chart = echarts.init(this.$refs.wrapper as HTMLDivElement)
+    chart.setOption(this.options)
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.chartWrapper{
+  height: 400px;
+}
+</style>
