@@ -35,7 +35,6 @@ export default class FormItem extends Vue {
 
 <style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
-
 .notes {
   border-radius: 10px;
   font-size: 15px;
