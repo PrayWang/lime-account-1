@@ -4,6 +4,7 @@
     <div class="chart-wrapper" ref="chartWrapper">
       <Chart  class="chart" :options="chartOptions"/>
     </div>
+    <div class="resultWrapper">
     <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
@@ -19,6 +20,7 @@
     </ol>
     <div v-else class="noResult">
       <Icon name="blank2" /> <span>目前没有相关记录</span>
+    </div>
     </div>
   </Layout>
 </template>
@@ -226,6 +228,13 @@ export default class Statistics extends Vue {
     &::-webkit-scrollbar{
       display: none;
     }
+  }
+}
+.resultWrapper{
+  height: 40vh;
+  overflow: auto;
+  &::-webkit-scrollbar{
+    display: none;
   }
 }
 </style>
